@@ -24,6 +24,8 @@
 
 ## Description
 
+Nestjs + GraphQL + Dgraph 空项目
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
