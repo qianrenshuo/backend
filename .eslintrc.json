@@ -1,6 +1,7 @@
 {
   "env": {
-    "browser": true
+    "browser": true,
+    "es2021": true
   },
   "extends": "standard",
   "parser": "@typescript-eslint/parser",
@@ -27,10 +28,6 @@
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
-        // "@typescript-eslint/interface-name-prefix": "off",
-        // "@typescript-eslint/explicit-function-return-type": "off",
-        // "@typescript-eslint/explicit-module-boundary-types": "off",
-        // "@typescript-eslint/no-explicit-any": "off",
         "simple-import-sort/imports": [
           "error",
           {
