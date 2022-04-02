@@ -4,17 +4,18 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { ScheduleModule } from '@nestjs/schedule'
 import { join } from 'path'
 
+import { AdminsModule } from './admins/admins.module'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
+import { CarouselsModule } from './carousels/carousels.module'
 import { ConnectionsModule } from './connections/connections.module'
+import { CredentialsModule } from './credentials/credentials.module'
 import { DbModule } from './db/db.module'
+import { DeletesModule } from './deletes/deletes.module'
+import { FieldsModule } from './fields/fields.module'
 import { QianrensModule } from './qianrens/qianrens.module'
+import { SubjectsModule } from './subjects/subjects.module'
 import { UsersModule } from './users/users.module'
-import { CarouselsModule } from './carousels/carousels.module';
-import { SubjectsModule } from './subjects/subjects.module';
-import { AdminsModule } from './admins/admins.module';
-import { CredentialsModule } from './credentials/credentials.module';
-import { FieldsModule } from './fields/fields.module';
 
 @Module({
   imports: [
@@ -33,7 +34,8 @@ import { FieldsModule } from './fields/fields.module';
     SubjectsModule,
     AdminsModule,
     CredentialsModule,
-    FieldsModule
+    FieldsModule,
+    DeletesModule
   ],
   controllers: [AppController],
   providers: [AppService]
