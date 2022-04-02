@@ -1,17 +1,15 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
 
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
-import { UserApplyRolesInfo, UserApplyRolesInfosConnection } from './models/user-apply-roles-infos.model'
+import { UserApplyRolesInfo } from './models/user-apply-roles-infos.model'
 import { UserRolesConnection } from './models/user-roles.model'
 import { LoginArgs, RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs, UsersConnection, UserWithLoginedToken } from './models/users.model'
-import { UserApplyRolesInfosService } from './user-apply-roles-infos.service'
 import { UsersService } from './users.service'
 
 @Resolver(of => User)
 export class UsersResolver {
   constructor (
-    private readonly usersService: UsersService,
-    private readonly userApplyRolesInfosService: UserApplyRolesInfosService
+    private readonly usersService: UsersService
   ) {}
 
   @Query(of => User, { description: '查询一个用户' })
@@ -42,11 +40,6 @@ export class UsersResolver {
   @Mutation(of => UserApplyRolesInfo, { description: '申请前人' })
   async applyQianren (@Args() args: UserApplyQianrenArgs) {
     return await this.usersService.applyQianren(args)
-  }
-
-  @Query(of => UserApplyRolesInfosConnection, { description: '所有用户的申请角色的信息' })
-  async userApplyRolesInfos (@Args() args: RelayPagingConfigArgs) {
-    return await this.userApplyRolesInfosService.getAll(args)
   }
 
   @ResolveField(of => UserRolesConnection, { description: '当前用户所具有的角色' })
