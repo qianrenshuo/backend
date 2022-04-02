@@ -134,6 +134,16 @@ type Field {
     qianrens
 }
 
+# 用户申请角色的申请信息
+type UserApplyRolesInfo {
+    # 创建时间
+    createdAt
+    # 创建者
+    creator
+    # 申请的角色
+    roles
+}
+
 # 认证凭证
 type Credential {
     # 创建时间
