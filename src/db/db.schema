@@ -14,6 +14,7 @@ participants: [uid] @count @reverse .
 conversation: [uid] @reverse .
 messages: [uid] @reverse .
 consultations: [uid] @count @reverse .
+transactions: [uid] @count @reverse .
 
 titles: [string] @count .
 
@@ -90,6 +91,8 @@ type User {
     balance
     # 该用户的所有的咨询
     consultations
+    # 该用户的所有转账
+    transactions
 }
 
 # 角色：前人
@@ -238,6 +241,16 @@ type Conversation {
     createdAt
     # 会话中的消息
     messages
+}
+
+# 转账
+type Transaction {
+    # 创建者
+    creator
+    # 被转账的对象
+    to
+    # 转账的金额（以人名币的分为单位）
+    value
 }
 
 # 消息

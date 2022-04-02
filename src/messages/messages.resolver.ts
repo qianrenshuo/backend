@@ -5,7 +5,7 @@ import { Conversation } from '../conversations/models/conversations.model'
 import { MessagesService } from './messages.service'
 import { AddMessageToConversationArgs, Message, MessageCreatorUnion, MessagesConnection } from './models/messages.model'
 
-@Resolver()
+@Resolver(of => Message)
 export class MessagesResolver {
   constructor (private readonly messagesService: MessagesService) {}
 
