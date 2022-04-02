@@ -22,6 +22,7 @@ import { TransactionsModule } from './transactions/transactions.module'
 import { TransactionsResolver } from './transactions/transactions.resolver'
 import { TransactionsService } from './transactions/transactions.service'
 import { UsersModule } from './users/users.module'
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -45,7 +46,8 @@ import { UsersModule } from './users/users.module'
     ConsultationsModule,
     ConversationsModule,
     MessagesModule,
-    TransactionsModule
+    TransactionsModule,
+    CommentsModule
   ],
   controllers: [AppController],
   providers: [AppService, TransactionsResolver, TransactionsService]

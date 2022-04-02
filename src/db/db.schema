@@ -163,6 +163,18 @@ type Delte {
     to
 }
 
+# 评论
+type Comment {
+    # 评论创建者
+    creator
+    # 评论创建时间
+    createdAt
+    # 评论内容
+    content
+    # 被评论对象
+    to
+}
+
 # 用户申请角色的申请信息
 type UserApplyRolesInfo {
     # 创建时间
@@ -229,6 +241,8 @@ type Consultation {
     endTime
     # 咨询类型（直接获取微信号、语音咨询）
     consultationTypes
+    # 咨询结束后，（双方的）对咨询的评价
+    comments
 }
 
 # 会话
