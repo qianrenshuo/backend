@@ -15,6 +15,7 @@ conversation: [uid] @reverse .
 messages: [uid] @reverse .
 consultations: [uid] @count @reverse .
 transactions: [uid] @count @reverse .
+delete: [uid] @reverse .
 
 titles: [string] @count .
 
