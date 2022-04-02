@@ -10,6 +10,7 @@ import { ConnectionsModule } from './connections/connections.module'
 import { DbModule } from './db/db.module'
 import { QianrensModule } from './qianrens/qianrens.module'
 import { UsersModule } from './users/users.module'
+import { CarouselsModule } from './carousels/carousels.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { UsersModule } from './users/users.module'
     DbModule,
     UsersModule,
     ConnectionsModule,
-    QianrensModule
+    QianrensModule,
+    CarouselsModule
   ],
   controllers: [AppController],
   providers: [AppService]
