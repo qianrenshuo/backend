@@ -1,0 +1,202 @@
+roles: [uid] @count @reverse .
+creator: [uid] @reverse .
+to: [uid] @reverse .
+credential: [uid] @reverse .
+qianrens: [uid] @count @reverse .
+users: [uid] @count @reverse .
+fields: [uid] @count @reverse . 
+consultationTypes: [uid] @reverse .
+topics: [uid] @reverse .
+carousels: [uid] @count @reverse .
+participants: [uid] @count @reverse .
+conversation: [uid] @reverse .
+
+titles: [string] @count .
+
+status: string @index(exact, hash) .
+foregroundImageUrl: string @index(exact) .
+subjectType: string @index(exact) .
+url: string @index(exact) .
+avatarImageUrl: string .
+description: string @index(fulltext) .
+title: string @index(exact, fulltext) .
+topicValue: string @index(exact, fulltext) .
+type: string @index(exact) .
+userId: string @index(exact, term, fulltext) .
+unionId: string @index(hash) .
+name: string @index(exact, term, fulltext) .
+wechatNumber: string @index(exact) .
+contact: string @index(fulltext) .
+partTime: string @index(fulltext) .
+
+consultationValue: int .
+balance: int .
+
+createdAt: dateTime @index(hour) .
+updatedAt: dateTime @index(hour) .
+lastLoginedAt: dateTime @index(hour) .
+startTime: dateTime @index(hour) .
+endTime: dateTime @index(hour) .
+
+sign: password .
+
+
+type Admin {
+    # 用户名
+    userId
+    # 用户昵称
+    name
+    # 创建时间
+    createdAt
+    # 用户密码
+    sign
+    # 该管理员创建的轮播图
+    carousels
+}
+
+type User {
+    # 用户头像
+    avatarImageUrl
+    # 用户名
+    userId
+    # 用户昵称
+    name
+    # 用户密码
+    sign
+    # 创建时间
+    createdAt
+    # 更新时间
+    updatedAt
+    # 上一次登录的时间
+    lastLoginedAt
+    # openId
+    openId
+    # unionId
+    unionId
+    # 角色
+    roles
+    # 用户余额（分人民币）
+    balance
+}
+
+# 角色：前人
+type Qianren {
+    # 具有该角色的所有User
+    users
+    # 联系方式
+    contact
+    # 微信号
+    wechatNumber
+    # 空闲时间
+    partTime
+    # 创建时间
+    createdAt
+    # 认证凭证
+    credential
+    # 前人头衔
+    titles
+    # 前人接受的咨询方式
+    consultationTypes
+    # 前人擅长的领域
+    fields
+    # 前人擅长的话题
+    topics
+    # 简单自述
+    description
+}
+
+# 前人接受的咨询方式
+type ConsultationType {
+    # 类型（直接提供微信号、语音咨询）
+    type
+    # 咨询费用（分人民币每分钟）
+    consultationValue
+}
+
+# 前人擅长的话题
+type Topic {
+    # 标题
+    title
+    # 内容
+    topicValue
+}
+
+# 前人擅长的领域
+type Field {
+    # 标题
+    title
+    # 创建时间
+    createdAt
+    # 创建者
+    creator
+    # 拥有该领域的前人
+    qianrens
+}
+
+# 认证凭证
+type Credential {
+    # 创建时间
+    createdAt
+    # 被授权的对象
+    to
+    # 创建者
+    creator
+}
+
+# 专题
+type Subject {
+    # 专题类型
+    subjectType
+    # 创建者
+    creator
+    # 创建时间
+    createdAt
+    # 标题
+    title
+    # 涉及的内容的url
+    url
+}
+
+# 轮播图
+type Carousel {
+    # 创建时间
+    createdAt
+    # 标题
+    title
+    # 创建者
+    creator
+    # 前景图
+    foregroundImageUrl
+}
+
+# 咨询（User对前人发起的咨询）
+type Consultation {
+    # 创建者
+    creator
+    # 被咨询对象
+    to
+    # 创建时间
+    createdAt
+    # 金额中转（咨询完成后，这部分金额会转移到被咨询者的余额）
+    balance
+    # 咨询的状态（微信号咨询直接完成、语音咨询涉及咨询时间，咨询时间到达后已完成）
+    status
+    # 咨询会话
+    conversation
+    # 开始时间
+    startTime
+    # 结束时间
+    endTime
+    # 咨询类型（直接获取微信号、语音咨询）
+    consultationTypes
+}
+
+# 消息会话
+type Conversation {
+    # 创建者
+    creator
+    # 会话参与者
+    participants
+    # 创建时间
+    createdAt
+}
