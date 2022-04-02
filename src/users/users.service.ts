@@ -2,10 +2,10 @@ import { ForbiddenException, Injectable } from '@nestjs/common'
 import { randomUUID } from 'crypto'
 
 import { UserIdExistException } from '../app.exception'
-import { RelayPagingConfigArgs } from '../connections/models/connections.model'
+import { ORDER_BY, RelayPagingConfigArgs } from '../connections/models/connections.model'
 import { DbService } from '../db/db.service'
-import { code2Session, now } from '../tool'
-import { LoginArgs, RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs } from './models/users.model'
+import { code2Session, handleRelayPagingAfter, now, relayfyArrayForward, RelayfyArrayParam } from '../tool'
+import { LoginArgs, RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs, UsersConnection } from './models/users.model'
 
 @Injectable()
 export class UsersService {
@@ -103,8 +103,45 @@ export class UsersService {
     }
   }
 
-  async users (args: RelayPagingConfigArgs) {
+  async users ({ first, after, orderBy }: RelayPagingConfigArgs) {
+    after = handleRelayPagingAfter(after)
+
+    if (first && orderBy === ORDER_BY.CREATED_AT_DESC) {
+      return await this.usersRelayForward(first, after)
+    }
     throw new Error('Method not implemented.')
+  }
+
+  async usersRelayForward (first: number, after: string): Promise<UsersConnection> {
+    const q1 = 'var(func: uid(users), orderdesc: createdAt) @filter(lt(createdAt, $after)) { q as uid }'
+    const query = `
+      query v($after: string) {
+        var(func: type(User), orderdesc: createdAt) {
+          users as uid
+        }
+        ${after ? q1 : ''}
+        totalCount(func: uid(users)) { count(uid) }
+        objs(func: uid(${after ? 'q' : 'users'}), orderdesc: createdAt, first: ${first}) {
+          id: uid
+          expand(_all_)
+        }
+        # 开始游标
+        startO(func: uid(users), first: -1) {
+          createdAt
+        }
+        # 结束游标
+        endO(func: uid(users), first: 1) {
+          createdAt
+        }
+      }
+    `
+    const res = await this.dbService.commitQuery<RelayfyArrayParam<User>>({ query, vars: { $after: after } })
+
+    return relayfyArrayForward({
+      ...res,
+      first,
+      after
+    })
   }
 
   async user (id: string): Promise<User> {
