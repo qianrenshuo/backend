@@ -1,6 +1,7 @@
 import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
 
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
+import { MessagesConnection } from '../messages/models/messages.model'
 import { ConversationsService } from './conversations.service'
 import { Conversation, ConversationCreatorUnion, ConversationParticipantUnion, ConversationsConnection } from './models/conversations.model'
 
@@ -26,5 +27,10 @@ export class ConversationsResolver {
   @ResolveField(of => ConversationParticipantUnion, { description: '会话的参与者' })
   async participants (@Parent() conversation: Conversation) {
     return await this.conversationsService.participants(conversation.id)
+  }
+
+  @ResolveField(of => MessagesConnection, { description: '会话中的所有消息' })
+  async messages (@Parent() conversation: Conversation) {
+    return await this.conversationsService.messages(conversation.id)
   }
 }
