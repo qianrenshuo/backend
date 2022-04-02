@@ -14,6 +14,7 @@ import { CarouselsModule } from './carousels/carousels.module';
 import { SubjectsModule } from './subjects/subjects.module';
 import { AdminsModule } from './admins/admins.module';
 import { CredentialsModule } from './credentials/credentials.module';
+import { FieldsModule } from './fields/fields.module';
 
 @Module({
   imports: [
@@ -31,7 +32,8 @@ import { CredentialsModule } from './credentials/credentials.module';
     CarouselsModule,
     SubjectsModule,
     AdminsModule,
-    CredentialsModule
+    CredentialsModule,
+    FieldsModule
   ],
   controllers: [AppController],
   providers: [AppService]
