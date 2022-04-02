@@ -19,6 +19,10 @@ import { SubjectsModule } from './subjects/subjects.module'
 import { UsersModule } from './users/users.module'
 import { ConversationsModule } from './conversations/conversations.module';
 import { MessagesModule } from './messages/messages.module';
+import { TranscationsModule } from './transcations/transcations.module';
+import { TransactionsResolver } from './transactions/transactions.resolver';
+import { TransactionsService } from './transactions/transactions.service';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -41,9 +45,11 @@ import { MessagesModule } from './messages/messages.module';
     DeletesModule,
     ConsultationsModule,
     ConversationsModule,
-    MessagesModule
+    MessagesModule,
+    TranscationsModule,
+    TransactionsModule
   ],
   controllers: [AppController],
-  providers: [AppService]
+  providers: [AppService, TransactionsResolver, TransactionsService]
 })
 export class AppModule {}

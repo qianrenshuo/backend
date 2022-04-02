@@ -245,12 +245,16 @@ type Conversation {
 
 # 转账
 type Transaction {
+    # 转账时间
+    createdAt
     # 创建者
     creator
     # 被转账的对象
     to
     # 转账的金额（以人名币的分为单位）
     value
+    # 转账涉及的对象
+    consultation
 }
 
 # 消息
