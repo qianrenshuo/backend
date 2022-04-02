@@ -18,6 +18,7 @@ import { QianrensModule } from './qianrens/qianrens.module'
 import { SubjectsModule } from './subjects/subjects.module'
 import { UsersModule } from './users/users.module'
 import { ConversationsModule } from './conversations/conversations.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -39,7 +40,8 @@ import { ConversationsModule } from './conversations/conversations.module';
     FieldsModule,
     DeletesModule,
     ConsultationsModule,
-    ConversationsModule
+    ConversationsModule,
+    MessagesModule
   ],
   controllers: [AppController],
   providers: [AppService]
