@@ -13,6 +13,9 @@ export abstract class Role {
   implements: () => [Role]
 })
 export class UserRole implements Role {
+  @Field(of => String, { description: '角色id' })
+    id: string
+
   @Field()
     createdAt: string
 }

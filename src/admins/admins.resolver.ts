@@ -6,7 +6,7 @@ import { SubjectsConnection } from '../subjects/models/subjects.model'
 import { AdminsService } from './admins.service'
 import { Admin, AdminsConnection, UpdateAdminArgs } from './models/admins.model'
 
-@Resolver()
+@Resolver(of => Admin)
 export class AdminsResolver {
   constructor (private readonly adminsService: AdminsService) {}
 

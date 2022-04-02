@@ -1,4 +1,4 @@
-import { Field, ObjectType } from '@nestjs/graphql'
+import { ArgsType, Field, ObjectType } from '@nestjs/graphql'
 
 import { Connection } from '../../connections/models/connections.model'
 
@@ -20,7 +20,7 @@ export class Admin {
 @ObjectType()
 export class AdminsConnection extends Connection<Admin>(Admin) {}
 
-@ObjectType()
+@ArgsType()
 export class UpdateAdminArgs {
   @Field(of => String, { description: '管理员昵称', nullable: true })
     name?: string | null

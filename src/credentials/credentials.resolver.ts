@@ -5,7 +5,7 @@ import { RelayPagingConfigArgs } from '../connections/models/connections.model'
 import { CredentialsService } from './credentials.service'
 import { ICredential, ICredentialsConnection, ICredentialToUnion } from './models/credentials.model'
 
-@Resolver()
+@Resolver(of => ICredential)
 export class CredentialsResolver {
   constructor (private readonly credentialsService: CredentialsService) {}
 
