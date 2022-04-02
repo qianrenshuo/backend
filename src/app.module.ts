@@ -9,6 +9,7 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { CarouselsModule } from './carousels/carousels.module'
 import { ConnectionsModule } from './connections/connections.module'
+import { ConsultationsModule } from './consultations/consultations.module'
 import { CredentialsModule } from './credentials/credentials.module'
 import { DbModule } from './db/db.module'
 import { DeletesModule } from './deletes/deletes.module'
@@ -35,7 +36,8 @@ import { UsersModule } from './users/users.module'
     AdminsModule,
     CredentialsModule,
     FieldsModule,
-    DeletesModule
+    DeletesModule,
+    ConsultationsModule
   ],
   controllers: [AppController],
   providers: [AppService]
