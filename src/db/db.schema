@@ -12,12 +12,14 @@ subjects: [uid] @count @reverse .
 credentials: [uid] @count @reverse .
 participants: [uid] @count @reverse .
 conversation: [uid] @reverse .
+messages: [uid] @reverse .
 
 titles: [string] @count .
 
 status: string @index(exact, hash) .
 foregroundImageUrl: string @index(exact) .
-subjectType: string @index(exact) .
+subjectType: string @index(hash) .
+messageType: string @index(hash) .
 url: string @index(exact) .
 avatarImageUrl: string .
 description: string @index(fulltext) .
@@ -31,6 +33,7 @@ name: string @index(exact, term, fulltext) .
 wechatNumber: string @index(exact) .
 contact: string @index(fulltext) .
 partTime: string @index(fulltext) .
+content: string @index(fulltext) .
 
 consultationValue: int .
 balance: int .
@@ -220,7 +223,7 @@ type Consultation {
     consultationTypes
 }
 
-# 消息会话
+# 会话
 type Conversation {
     # 创建者
     creator
@@ -228,4 +231,20 @@ type Conversation {
     participants
     # 创建时间
     createdAt
+    # 会话中的消息
+    messages
+}
+
+# 消息
+type Message {
+    # 消息类型
+    messageType
+    # 消息创建时间
+    createdAt
+    # 消息内容
+    content
+    # 消息创建者
+    creator
+    # 消息所在的会话
+    to
 }
