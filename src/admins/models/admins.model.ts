@@ -26,8 +26,14 @@ export class UpdateAdminArgs {
     name?: string | null
 }
 
-@ObjectType()
+@ArgsType()
 export class RegisterAdminArgs {
   @Field(of => String, { description: '管理员昵称' })
-    name?: string | null
+    name: string
+
+  @Field(of => String, { description: '密码' })
+    sign: string
+
+  @Field(of => String, { description: '用户名' })
+    userId: string
 }

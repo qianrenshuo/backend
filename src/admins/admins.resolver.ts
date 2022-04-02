@@ -1,10 +1,10 @@
-import { Args, Query, ResolveField, Resolver } from '@nestjs/graphql'
+import { Args, Mutation, Query, ResolveField, Resolver } from '@nestjs/graphql'
 
 import { CarouselsConnection } from '../carousels/models/carousels.model'
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
 import { SubjectsConnection } from '../subjects/models/subjects.model'
 import { AdminsService } from './admins.service'
-import { Admin, AdminsConnection, UpdateAdminArgs } from './models/admins.model'
+import { Admin, AdminsConnection, RegisterAdminArgs, UpdateAdminArgs } from './models/admins.model'
 
 @Resolver(of => Admin)
 export class AdminsResolver {
@@ -20,9 +20,14 @@ export class AdminsResolver {
     return await this.adminsService.admins(args)
   }
 
-  @Query(of => Admin, { description: '更新管理员信息' })
+  @Mutation(of => Admin, { description: '更新管理员信息' })
   async updateAdmin (@Args() args: UpdateAdminArgs) {
     return await this.adminsService.updateAdmin(args)
+  }
+
+  @Mutation(of => Admin, { description: '注册管理员' })
+  async registerAdmin (@Args() args: RegisterAdminArgs) {
+    return await this.adminsService.registerAdmin(args)
   }
 
   @ResolveField(of => CarouselsConnection, { description: '该管理员创建的所有轮播图' })
