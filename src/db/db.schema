@@ -17,6 +17,7 @@ comments: [uid] @count @reverse .
 consultations: [uid] @count @reverse .
 transactions: [uid] @count @reverse .
 delete: [uid] @reverse .
+consultation: [uid] @reverse .
 
 titles: [string] @count .
 
