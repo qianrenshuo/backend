@@ -13,6 +13,7 @@ credentials: [uid] @count @reverse .
 participants: [uid] @count @reverse .
 conversation: [uid] @reverse .
 messages: [uid] @reverse .
+consultations: [uid] @count @reverse .
 
 titles: [string] @count .
 
@@ -87,6 +88,8 @@ type User {
     roles
     # 用户余额（分人民币）
     balance
+    # 该用户的所有的咨询
+    consultations
 }
 
 # 角色：前人
@@ -113,6 +116,8 @@ type Qianren {
     topics
     # 简单自述
     description
+    # 该前人所有的咨询
+    consultations
 }
 
 # 前人接受的咨询方式
