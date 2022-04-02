@@ -13,6 +13,7 @@ credentials: [uid] @count @reverse .
 participants: [uid] @count @reverse .
 conversation: [uid] @reverse .
 messages: [uid] @reverse .
+comments: [uid] @count @reverse .
 consultations: [uid] @count @reverse .
 transactions: [uid] @count @reverse .
 delete: [uid] @reverse .
