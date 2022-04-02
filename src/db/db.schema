@@ -24,6 +24,7 @@ topicValue: string @index(exact, fulltext) .
 type: string @index(exact) .
 userId: string @index(exact, term, fulltext) .
 unionId: string @index(hash) .
+openId: string @index(hash) .
 name: string @index(exact, term, fulltext) .
 wechatNumber: string @index(exact) .
 contact: string @index(fulltext) .

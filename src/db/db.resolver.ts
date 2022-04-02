@@ -1,4 +1,4 @@
-import { Mutation, Resolver } from '@nestjs/graphql'
+import { Mutation, Query, Resolver } from '@nestjs/graphql'
 
 import { DbService } from './db.service'
 import { SetDbSchema } from './models/db.model'
@@ -6,6 +6,10 @@ import { SetDbSchema } from './models/db.model'
 @Resolver()
 export class DbResolver {
   constructor (private readonly dbService: DbService) {}
+  @Query(of => String)
+  async test () {
+    return 'test function'
+  }
 
   @Mutation(of => SetDbSchema, { description: '重置数据库schema' })
   async setSchema () {
