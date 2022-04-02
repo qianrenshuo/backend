@@ -1,6 +1,7 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
 
 import { Admin } from '../admins/models/admins.model'
+import { CurrentPerson, Role, Roles } from '../auths/auths.decorator'
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
 import { Delete } from '../deletes/models/deletes.model'
 import { QianrensConnection } from '../qianrens/models/qianrens.model'
@@ -23,8 +24,9 @@ export class FieldsResolver {
   }
 
   @Mutation(of => IField, { description: '新增领域' })
-  async addField (@Args() args: AddFieldArgs) {
-    return await this.fieldsService.addField(args)
+  @Roles(Role.Admin)
+  async addField (@CurrentPerson() admin: Admin, @Args() args: AddFieldArgs) {
+    return await this.fieldsService.addField(admin.id, args)
   }
 
   @Mutation(of => Delete, { description: '将指定的Field标记为删除状态' })
