@@ -3,7 +3,7 @@ creator: [uid] @reverse .
 to: [uid] @reverse .
 credential: [uid] @reverse .
 qianrens: [uid] @count @reverse .
-users: [uid] @count @reverse .
+user: [uid] @reverse .
 fields: [uid] @count @reverse . 
 consultationTypes: [uid] @reverse .
 topics: [uid] @reverse .
@@ -98,8 +98,8 @@ type User {
 
 # 角色：前人
 type Qianren {
-    # 具有该角色的所有User
-    users
+    # 该前人对应的user
+    user
     # 联系方式
     contact
     # 微信号

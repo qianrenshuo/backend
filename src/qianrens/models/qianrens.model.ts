@@ -22,6 +22,21 @@ export class Qianren extends UserRole implements Role {
 
   @Field(of => String, { description: '创建时间' })
     createdAt: string
+
+  @Field(of => String, { description: '前人联系方式' })
+    contact: string
+
+  @Field(of => String, { description: '前人微信号' })
+    wechatNumber: string
+
+  @Field(of => String, { description: '前人空闲时间' })
+    partTime: string
+
+  @Field(of => [String], { description: '前人头衔' })
+    titles: string[]
+
+  @Field(of => String, { description: '前人自述' })
+    description: string
 }
 
 @ObjectType()
@@ -40,4 +55,13 @@ export class ConsultationType {
 
   @Field(of => Int, { description: '咨询费用，以人名币的分为单位' })
     consultationValue: number
+}
+
+@ObjectType({ description: '前人擅长的话题' })
+export class Topic {
+  @Field({ description: '标题' })
+    title: string
+
+  @Field({ description: '描述' })
+    topicValue: string
 }
