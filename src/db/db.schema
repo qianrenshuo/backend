@@ -8,6 +8,8 @@ fields: [uid] @count @reverse .
 consultationTypes: [uid] @reverse .
 topics: [uid] @reverse .
 carousels: [uid] @count @reverse .
+subjects: [uid] @count @reverse .
+credentials: [uid] @count @reverse .
 participants: [uid] @count @reverse .
 conversation: [uid] @reverse .
 
@@ -53,6 +55,10 @@ type Admin {
     sign
     # 该管理员创建的轮播图
     carousels
+    # 该管理员创建的所有专题
+    subjects
+    # 该管理员颁发的所有认证凭证
+    credentials
 }
 
 type User {
