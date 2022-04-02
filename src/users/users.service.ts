@@ -9,6 +9,21 @@ import { LoginArgs, RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs
 
 @Injectable()
 export class UsersService {
+  async getUserOrAdminWithRolesByUid (id: string) {
+    const query = `
+      query v($id: string) {
+        user(func: uid($id)) {
+          id: uid
+          expand(_all_)
+          roles: dgraph.type
+        }
+      }
+    `
+    const res = await this.dbService.commitQuery<{user: Array<User & {roles: string[]}>}>({ query, vars: { $id: id } })
+
+    return res.user[0]
+  }
+
   constructor (private readonly dbService: DbService) {}
   async transactions (args: RelayPagingConfigArgs) {
     throw new Error('Method not implemented.')
