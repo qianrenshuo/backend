@@ -2,6 +2,7 @@ import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/g
 
 import { Admin } from '../admins/models/admins.model'
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
+import { Delete } from '../deletes/models/deletes.model'
 import { QianrensConnection } from '../qianrens/models/qianrens.model'
 import { UpdateUserArgs } from '../users/models/users.model'
 import { FieldsService } from './fields.service'
@@ -24,6 +25,11 @@ export class FieldsResolver {
   @Mutation(of => IField, { description: '新增领域' })
   async addField (@Args() args: AddFieldArgs) {
     return await this.fieldsService.addField(args)
+  }
+
+  @Mutation(of => Delete, { description: '将指定的Field标记为删除状态' })
+  async addDeleteOnField (@Args('id') id: string) {
+    return await this.fieldsService.addDeleteOnField(id)
   }
 
   @Mutation(of => IField, { description: '更新指定领域' })

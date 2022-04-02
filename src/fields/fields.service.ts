@@ -6,6 +6,10 @@ import { AddFieldArgs } from './models/fields.model'
 
 @Injectable()
 export class FieldsService {
+  async addDeleteOnField (id: string) {
+    throw new Error('Method not implemented.')
+  }
+
   async qianrens (id: string, args: RelayPagingConfigArgs) {
     throw new Error('Method not implemented.')
   }
