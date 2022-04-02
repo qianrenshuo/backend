@@ -6,9 +6,10 @@ import { join } from 'path'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
+import { ConnectionsModule } from './connections/connections.module'
 import { DbModule } from './db/db.module'
+import { QianrensModule } from './qianrens/qianrens.module'
 import { UsersModule } from './users/users.module'
-import { ConnectionsModule } from './connections/connections.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { ConnectionsModule } from './connections/connections.module';
     }),
     DbModule,
     UsersModule,
-    ConnectionsModule
+    ConnectionsModule,
+    QianrensModule
   ],
   controllers: [AppController],
   providers: [AppService]
