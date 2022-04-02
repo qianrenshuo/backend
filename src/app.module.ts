@@ -11,6 +11,7 @@ import { DbModule } from './db/db.module'
 import { QianrensModule } from './qianrens/qianrens.module'
 import { UsersModule } from './users/users.module'
 import { CarouselsModule } from './carousels/carousels.module';
+import { SubjectsModule } from './subjects/subjects.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { CarouselsModule } from './carousels/carousels.module';
     UsersModule,
     ConnectionsModule,
     QianrensModule,
-    CarouselsModule
+    CarouselsModule,
+    SubjectsModule
   ],
   controllers: [AppController],
   providers: [AppService]
