@@ -138,6 +138,18 @@ type Field {
     creator
     # 拥有该领域的前人
     qianrens
+    # 删除信息
+    delete
+}
+
+# 删除
+type Delte {
+    # 创建时间
+    createdAt
+    # 创建者
+    creator
+    # 被标记删除的对象
+    to
 }
 
 # 用户申请角色的申请信息
