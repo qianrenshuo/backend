@@ -5,7 +5,7 @@ import { UserIdExistException } from '../app.exception'
 import { ORDER_BY, RelayPagingConfigArgs } from '../connections/models/connections.model'
 import { DbService } from '../db/db.service'
 import { code2Session, handleRelayPagingAfter, now, relayfyArrayForward, RelayfyArrayParam } from '../tool'
-import { LoginArgs, RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs, UsersConnection } from './models/users.model'
+import { RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs, UsersConnection } from './models/users.model'
 
 @Injectable()
 export class UsersService {
@@ -38,10 +38,6 @@ export class UsersService {
   }
 
   async applyQianren (args: UserApplyQianrenArgs) {
-    throw new Error('Method not implemented.')
-  }
-
-  async login (args: LoginArgs) {
     throw new Error('Method not implemented.')
   }
 

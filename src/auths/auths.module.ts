@@ -1,8 +1,12 @@
-import { Module } from '@nestjs/common';
-import { AuthsResolver } from './auths.resolver';
-import { AuthsService } from './auths.service';
+import { Module } from '@nestjs/common'
+
+import { DbService } from '../db/db.service'
+import { SharedModule } from '../shared/shared.module'
+import { AuthsResolver } from './auths.resolver'
+import { AuthsService } from './auths.service'
 
 @Module({
-  providers: [AuthsResolver, AuthsService]
+  imports: [SharedModule],
+  providers: [AuthsResolver, AuthsService, DbService]
 })
 export class AuthsModule {}

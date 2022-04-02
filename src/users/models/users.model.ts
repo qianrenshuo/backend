@@ -80,21 +80,6 @@ export class UpdateUserArgs {
     name?: string | null
 }
 
-@ArgsType()
-export class LoginArgs {
-  @Field(of => String, { description: '只填code表示通过code进行登录' })
-    code?: string | null
-
-  @Field(of => String, { description: '通过UserId进行登录' })
-    userId?: string | null
-
-  @Field(of => String, { description: '通过id进行登录' })
-    id?: string | null
-
-  @Field(of => String, { description: '用户密码' })
-    sign?: string | null
-}
-
 @ObjectType()
 export class UserWithLoginedToken extends PartialType(User) {
   @Field(of => String, { description: 'token' })

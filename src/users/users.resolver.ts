@@ -6,7 +6,7 @@ import { ConsultationsConnection } from '../consultations/models/consultations.m
 import { TransactionsConnection } from '../transactions/models/transactions.model'
 import { UserApplyRolesInfo } from './models/user-apply-roles-infos.model'
 import { UserRolesConnection } from './models/user-roles.model'
-import { LoginArgs, RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs, UsersConnection, UserWithLoginedToken } from './models/users.model'
+import { RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs, UsersConnection } from './models/users.model'
 import { UsersService } from './users.service'
 
 @Resolver(of => User)
@@ -34,11 +34,6 @@ export class UsersResolver {
   @Mutation(of => User, { description: '更新用户信息' })
   async updateUser (@Args() args: UpdateUserArgs) {
     return await this.usersService.updateUser(args)
-  }
-
-  @Mutation(of => UserWithLoginedToken, { description: '用户登录' })
-  async login (@Args() args: LoginArgs) {
-    return await this.usersService.login(args)
   }
 
   @Mutation(of => UserApplyRolesInfo, { description: '申请前人' })
