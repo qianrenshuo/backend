@@ -18,6 +18,7 @@ consultations: [uid] @count @reverse .
 transactions: [uid] @count @reverse .
 delete: [uid] @reverse .
 consultation: [uid] @reverse .
+interests: [uid] @count @reverse .
 
 titles: [string] @count .
 
@@ -39,6 +40,9 @@ wechatNumber: string @index(exact) .
 contact: string @index(fulltext) .
 partTime: string @index(fulltext) .
 content: string @index(fulltext) .
+phoneNumber: string @index(hash) .
+specialty: string @index(fulltext) .
+grade: string @index(fulltext) .
 
 consultationValue: int .
 balance: int .
@@ -88,6 +92,12 @@ type User {
     openId
     # unionId
     unionId
+    # 用户的专业
+    specialty
+    # 用户的手机号
+    phoneNumber
+    # 用户的年级
+    grade
     # 角色
     roles
     # 用户余额（分人民币）
@@ -96,6 +106,8 @@ type User {
     consultations
     # 该用户的所有转账
     transactions
+    # 用户感兴趣的领域
+    interests
 }
 
 # 角色：前人

@@ -30,6 +30,15 @@ export class User {
 
   @Field({ description: '用户在微信的unionId', nullable: true })
     unionId?: string | null
+
+  @Field({ description: '用户的专业' })
+    specialty: string
+
+  @Field({ description: '手机号' })
+    phoneNumber: string
+
+  @Field({ description: '用户的年级' })
+    grade: string
 }
 
 @ObjectType()
@@ -51,6 +60,15 @@ export class RegisterUserArgs {
 
   @Field({ description: '用户昵称' })
     name: string
+
+  @Field({ description: '用户的专业' })
+    specialty: string
+
+  @Field({ description: '用户的手机号' })
+    phoneNumber: string
+
+  @Field({ description: '用户的年级' })
+    grade: string
 
   openId?: string | null
   unionId?: string | null
