@@ -5,6 +5,10 @@ import { LoginArgs, RegisterUserArgs, UpdateUserArgs, UserApplyQianrenArgs } fro
 
 @Injectable()
 export class UsersService {
+  async consultations (args: RelayPagingConfigArgs) {
+    throw new Error('Method not implemented.')
+  }
+
   async roles (id: string, args: RelayPagingConfigArgs) {
     throw new Error('Method not implemented.')
   }

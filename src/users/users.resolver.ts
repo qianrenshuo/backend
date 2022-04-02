@@ -1,6 +1,7 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
 
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
+import { ConsultationsConnection } from '../consultations/models/consultations.model'
 import { UserApplyRolesInfo } from './models/user-apply-roles-infos.model'
 import { UserRolesConnection } from './models/user-roles.model'
 import { LoginArgs, RegisterUserArgs, UpdateUserArgs, User, UserApplyQianrenArgs, UsersConnection, UserWithLoginedToken } from './models/users.model'
@@ -45,5 +46,10 @@ export class UsersResolver {
   @ResolveField(of => UserRolesConnection, { description: '当前用户所具有的角色' })
   async roles (@Parent() user: User, @Args() args: RelayPagingConfigArgs) {
     return await this.usersService.roles(user.id, args)
+  }
+
+  @ResolveField(of => ConsultationsConnection, { description: '当前用户所有的咨询' })
+  async consultations (@Args() args: RelayPagingConfigArgs) {
+    return await this.usersService.consultations(args)
   }
 }

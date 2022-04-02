@@ -5,6 +5,10 @@ import { UpdateQianrenArgs } from './models/qianrens.model'
 
 @Injectable()
 export class QianrensService {
+  async consultations (args: RelayPagingConfigArgs) {
+    throw new Error('Method not implemented.')
+  }
+
   async consultationType (id: string) {
     throw new Error('Method not implemented.')
   }

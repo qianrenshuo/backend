@@ -1,6 +1,7 @@
-import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
+import { Args, Field, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
 
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
+import { ConsultationsConnection } from '../consultations/models/consultations.model'
 import { ICredential } from '../credentials/models/credentials.model'
 import { ConsultationType, Qianren, QianrensConnection, UpdateQianrenArgs } from './models/qianrens.model'
 import { QianrensService } from './qianrens.service'
@@ -32,5 +33,10 @@ export class QianrensResolver {
   @ResolveField(of => [ConsultationType], { description: '前人支持的咨询方式' })
   async consultationType (@Parent() qianren: Qianren) {
     return await this.qianrensService.consultationType(qianren.id)
+  }
+
+  @Field(of => ConsultationsConnection, { description: '当前前人的所有咨询' })
+  async consultations (@Args() args: RelayPagingConfigArgs) {
+    return await this.qianrensService.consultations(args)
   }
 }
