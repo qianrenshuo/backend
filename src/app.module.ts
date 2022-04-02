@@ -17,6 +17,7 @@ import { FieldsModule } from './fields/fields.module'
 import { QianrensModule } from './qianrens/qianrens.module'
 import { SubjectsModule } from './subjects/subjects.module'
 import { UsersModule } from './users/users.module'
+import { ConversationsModule } from './conversations/conversations.module';
 
 @Module({
   imports: [
@@ -37,7 +38,8 @@ import { UsersModule } from './users/users.module'
     CredentialsModule,
     FieldsModule,
     DeletesModule,
-    ConsultationsModule
+    ConsultationsModule,
+    ConversationsModule
   ],
   controllers: [AppController],
   providers: [AppService]
