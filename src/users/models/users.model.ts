@@ -25,11 +25,11 @@ export class User {
   @Field({ description: '用户上一次登录时间' })
     lastLoginedAt: string
 
-  @Field({ description: '用户在小程序的openId' })
-    openId: string
+  @Field({ description: '用户在小程序的openId', nullable: true })
+    openId?: string | null
 
-  @Field({ description: '用户在微信的unionId' })
-    unionId: string
+  @Field({ description: '用户在微信的unionId', nullable: true })
+    unionId?: string | null
 }
 
 @ObjectType()
@@ -37,8 +37,23 @@ export class UsersConnection extends Connection<User>(User) {}
 
 @ArgsType()
 export class RegisterUserArgs {
-  @Field({ description: '通过小程序注册的code', nullable: true })
+  @Field({ description: '通过小程序的code注册', nullable: true })
     code?: string | null
+
+  @Field({ description: '用户名，置空时系统自动生成', nullable: true })
+    userId?: string | null
+
+  @Field({ description: '密码，不能和code同时为空，否则无法登录；存在code时sign置空自动生成', nullable: true })
+    sign?: string | null
+
+  @Field({ description: '用户头像' })
+    avatarImageUrl: string
+
+  @Field({ description: '用户昵称' })
+    name: string
+
+  openId?: string | null
+  unionId?: string | null
 }
 
 @ArgsType()

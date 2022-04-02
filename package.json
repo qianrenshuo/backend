@@ -30,6 +30,7 @@
     "@nestjs/schedule": "^1.0.2",
     "@types/cron": "^1.7.3",
     "apollo-server-express": "^3.6.4",
+    "axios": "^0.26.1",
     "dgraph-js": "^21.3.1",
     "graphql": "^16.3.0",
     "graphql-relay": "^0.10.0",
