@@ -10,19 +10,18 @@ import { AppService } from './app.service'
 import { CarouselsModule } from './carousels/carousels.module'
 import { ConnectionsModule } from './connections/connections.module'
 import { ConsultationsModule } from './consultations/consultations.module'
+import { ConversationsModule } from './conversations/conversations.module'
 import { CredentialsModule } from './credentials/credentials.module'
 import { DbModule } from './db/db.module'
 import { DeletesModule } from './deletes/deletes.module'
 import { FieldsModule } from './fields/fields.module'
+import { MessagesModule } from './messages/messages.module'
 import { QianrensModule } from './qianrens/qianrens.module'
 import { SubjectsModule } from './subjects/subjects.module'
+import { TransactionsModule } from './transactions/transactions.module'
+import { TransactionsResolver } from './transactions/transactions.resolver'
+import { TransactionsService } from './transactions/transactions.service'
 import { UsersModule } from './users/users.module'
-import { ConversationsModule } from './conversations/conversations.module';
-import { MessagesModule } from './messages/messages.module';
-import { TranscationsModule } from './transcations/transcations.module';
-import { TransactionsResolver } from './transactions/transactions.resolver';
-import { TransactionsService } from './transactions/transactions.service';
-import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -46,7 +45,6 @@ import { TransactionsModule } from './transactions/transactions.module';
     ConsultationsModule,
     ConversationsModule,
     MessagesModule,
-    TranscationsModule,
     TransactionsModule
   ],
   controllers: [AppController],

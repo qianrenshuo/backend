@@ -5,7 +5,7 @@ import { User } from '../users/models/users.model'
 import { Transaction, TransactionAboutUnion, TransactionsConnection } from './models/transactions.model'
 import { TransactionsService } from './transactions.service'
 
-@Resolver()
+@Resolver(of => Transaction)
 export class TransactionsResolver {
   constructor (private readonly transactionsService: TransactionsService) {}
 
@@ -29,7 +29,7 @@ export class TransactionsResolver {
     return await this.transactionsService.to(transaction.id)
   }
 
-  @ResolveField(of => TransactionAboutUnion, { description: '转装涉及的对象' })
+  @ResolveField(of => TransactionAboutUnion, { description: '转账涉及的对象' })
   async about (@Parent() transaction: Transaction) {
     return await this.transactionsService.about(transaction.id)
   }
