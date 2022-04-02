@@ -107,7 +107,16 @@ export class UsersService {
     throw new Error('Method not implemented.')
   }
 
-  async user (id: string) {
-    throw new Error('Method not implemented.')
+  async user (id: string): Promise<User> {
+    const query = `
+      query v($id: string) {
+        user(func: uid($id)) {
+          id: uid
+          expand(_all_)
+        }
+      }
+    `
+    const res = await this.dbService.commitQuery<{user: User[]}>({ query, vars: { $id: id } })
+    return res.user[0]
   }
 }
