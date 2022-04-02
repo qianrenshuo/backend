@@ -13,6 +13,7 @@ import { UsersModule } from './users/users.module'
 import { CarouselsModule } from './carousels/carousels.module';
 import { SubjectsModule } from './subjects/subjects.module';
 import { AdminsModule } from './admins/admins.module';
+import { CredentialsModule } from './credentials/credentials.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import { AdminsModule } from './admins/admins.module';
     QianrensModule,
     CarouselsModule,
     SubjectsModule,
-    AdminsModule
+    AdminsModule,
+    CredentialsModule
   ],
   controllers: [AppController],
   providers: [AppService]
