@@ -1,5 +1,6 @@
 import { Args, Mutation, Query, ResolveField, Resolver } from '@nestjs/graphql'
 
+import { NoAuth } from '../auths/auths.decorator'
 import { CarouselsConnection } from '../carousels/models/carousels.model'
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
 import { SubjectsConnection } from '../subjects/models/subjects.model'
@@ -26,6 +27,7 @@ export class AdminsResolver {
   }
 
   @Mutation(of => Admin, { description: '注册管理员' })
+  @NoAuth()
   async registerAdmin (@Args() args: RegisterAdminArgs) {
     return await this.adminsService.registerAdmin(args)
   }

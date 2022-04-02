@@ -1,5 +1,6 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
 
+import { NoAuth } from '../auths/auths.decorator'
 import { RelayPagingConfigArgs } from '../connections/models/connections.model'
 import { ConsultationsConnection } from '../consultations/models/consultations.model'
 import { TransactionsConnection } from '../transactions/models/transactions.model'
@@ -25,6 +26,7 @@ export class UsersResolver {
   }
 
   @Mutation(of => User, { description: '用户注册' })
+  @NoAuth()
   async registerUser (@Args() args: RegisterUserArgs) {
     return await this.usersService.registerUser(args)
   }
